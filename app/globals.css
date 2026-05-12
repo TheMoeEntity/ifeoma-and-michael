@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --gold: #c9a84c;
+  --gold-light: #e8c97a;
+  --gold-dark: #a8873a;
+  --primary-text: #a2a2a2;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --font-cormorant: var(--font-cormorant);
+  --font-garamond: var(--font-garamond);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-garamond), Georgia, serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero-overlay {
+  animation: fadeIn 1.2s ease forwards;
+}
+
+.hero-names {
+  opacity: 0;
+  animation: slideInLeft 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+}
+
+.hero-verse {
+  opacity: 0;
+  animation: slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.8s forwards;
+}
+
+.hero-countdown {
+  opacity: 0;
+  animation: slideInRight 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+}
+
+.hero-arrows {
+  opacity: 0;
+  animation: fadeIn 0.6s ease 1.4s forwards;
+}
+
+.countdown-tick {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
