@@ -80,7 +80,7 @@ export default function BlessingsCarousel({
                 {message}
               </p>
               <p
-                className="text-left border-b pb-8 border-black font-medium text-sm tracking-widest text-black"
+                className="text-left border-b pb-7 border-black font-medium text-sm tracking-widest text-black"
                 style={{ fontFamily: "var(--font-garamond)" }}
               >
                 {name.toUpperCase()}
