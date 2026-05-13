@@ -61,7 +61,7 @@ export default function Header() {
             href={INVITE_HREF}
             target="_blank"
             download="Ifeoma-and-Michael-Invitation.pdf"
-            className="ml-60 hidden md:inline-flex items-center gap-2 text-xs tracking-widest px-4 py-2 border rounded-full transition-colors font-[family-name:var(--font-garamond)]"
+            className="ml-62 hidden md:inline-flex items-center gap-2 text-xs tracking-widest px-4 py-2 border rounded-full transition-colors font-[family-name:var(--font-garamond)]"
             style={{
               borderColor: scrolled ? "#1a1a1a" : "rgba(255,255,255,0.7)",
               color: textColor,
