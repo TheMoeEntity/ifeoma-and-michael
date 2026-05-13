@@ -1,13 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="py-10 bg-white text-center">
-      <hr className="border-gray-200 max-w-5xl mx-auto mb-8" />
-      <p
-        className="text-xs tracking-[0.4em] uppercase text-gray-500"
-        style={{ fontFamily: "var(--font-garamond)" }}
-      >
+    <footer className="mt-24 py-16 flex items-center justify-center gap-10 md:gap-60">
+      <div className="h-px flex-1 bg-[#EBAC19]" />
+
+      <p className="font-serif max-w-[30%] text-center mx-auto md:max-w-auto text-sm md:text-[18px] uppercase tracking-[0.5em] text-black">
         Ifeoma &amp; Michael 2026
       </p>
+
+      <div className="h-px flex-1 bg-[#EBAC19]" />
     </footer>
   );
 }

@@ -9,8 +9,8 @@ function StoryArtifacts({ children }: { children: React.ReactNode }) {
       <div className="absolute top-0 bottom-0 -left-12 md:-left-60 w-10 md:w-14 pointer-events-none select-none">
         <Image
           src={leftArtifact}
-          alt=""
-          className="object-contain md:object-fill"
+          alt="Wedding Artifact"
+          className="hidden md:block object-fill"
           fill
         />
       </div>
@@ -18,7 +18,7 @@ function StoryArtifacts({ children }: { children: React.ReactNode }) {
         <Image
           src={rightArtifact}
           alt=""
-          className="object-contain md:object-fill"
+          className="hidden md:block object-fill"
           fill
         />
       </div>
@@ -29,7 +29,7 @@ function StoryArtifacts({ children }: { children: React.ReactNode }) {
 
 export default function OurStory() {
   return (
-    <section id="our-story" className="py-20 bg-white overflow-x-hidden">
+    <section id="our-story" className="py-16 bg-white overflow-x-hidden">
       <div className="flex flex-col items-center mb-12">
         <WeddingOrnament />
         <div className="flex items-center gap-8 mt-6 w-full">

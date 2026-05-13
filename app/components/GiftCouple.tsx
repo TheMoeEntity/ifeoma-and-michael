@@ -1,8 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Ornament from "./Ornament";
 import WeddingOrnament from "./WeddingOrnament";
+
+import opayLogo from "../assets/Opay 1.png";
+import accessLogo from "../assets/Access Bank 1.png";
+import gtbLogo from "../assets/GT Bank 1.png";
+import vtbLogo from "../assets/Vtb-logo 1.png";
+import alphaLogo from "../assets/alpha-bank-romania-vector-logo.png";
+import sberLogo from "../assets/Sberbank.png";
+import tinkoffLogo from "../assets/tinkoff-bank-logo-png 1.png";
 
 function CopyButton({ value }: { value: string }) {
   const [copied, setCopied] = useState(false);
@@ -58,22 +67,22 @@ function CopyButton({ value }: { value: string }) {
 export default function GiftCouple() {
   return (
     <section id="gift" className="py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="px-6">
         <div className="flex flex-col items-center mb-14">
           <WeddingOrnament />
-          <div className="flex items-center gap-4 mt-6 w-full">
-            <hr className="flex-1 border-gray-200" />
+          <div className="flex items-center gap-10 mt-6 w-full">
+            <hr className="flex-1 bg-[#EBAC19] border-[#EBAC19]" />
             <h2
-              className="text-xs tracking-[0.35em] uppercase text-foreground"
+              className="text-xl tracking-[0.35em] uppercase text-foreground"
               style={{ fontFamily: "var(--font-garamond)" }}
             >
               Gift the Couple
             </h2>
-            <hr className="flex-1 border-gray-200" />
+            <hr className="flex-1 bg-[#EBAC19] border-[#EBAC19]" />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className=" max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Naira */}
           <div className="border border-gray-200 rounded-lg p-6">
             <h3
@@ -93,12 +102,12 @@ export default function GiftCouple() {
             </p>
             <div className="space-y-3">
               <div className="flex items-center">
-                <span
-                  className="text-xs font-bold tracking-wide text-[#00A651] mr-1"
-                  style={{ fontFamily: "var(--font-garamond)" }}
-                >
-                  ●Pay
-                </span>
+                <Image
+                  src={opayLogo}
+                  alt="OPay"
+                  height={20}
+                  style={{ width: "auto", objectFit: "contain" }}
+                />
                 <span
                   className="text-sm ml-2 text-gray-800"
                   style={{ fontFamily: "var(--font-garamond)" }}
@@ -108,12 +117,12 @@ export default function GiftCouple() {
                 <CopyButton value="7018183702" />
               </div>
               <div className="flex items-center">
-                <span
-                  className="text-xs font-bold tracking-wide text-[#CC0000]"
-                  style={{ fontFamily: "var(--font-garamond)" }}
-                >
-                  ◆ access
-                </span>
+                <Image
+                  src={accessLogo}
+                  alt="Access Bank"
+                  height={20}
+                  style={{ width: "auto", objectFit: "contain" }}
+                />
                 <span
                   className="text-sm ml-2 text-gray-800"
                   style={{ fontFamily: "var(--font-garamond)" }}
@@ -151,18 +160,21 @@ export default function GiftCouple() {
               </span>
               <CopyButton value="+79777322747" />
             </div>
-            <div className="flex flex-wrap gap-2">
-              {["VTB", "Alpha Bank", "Sber Bank", "Tinkoff Bank"].map(
-                (bank) => (
-                  <span
-                    key={bank}
-                    className="text-xs border border-gray-300 rounded px-2 py-1 text-gray-600"
-                    style={{ fontFamily: "var(--font-garamond)" }}
-                  >
-                    {bank}
-                  </span>
-                ),
-              )}
+            <div className="flex flex-wrap gap-3 items-center">
+              {[
+                { src: vtbLogo, alt: "VTB" },
+                { src: alphaLogo, alt: "Alpha Bank" },
+                { src: sberLogo, alt: "Sber Bank" },
+                { src: tinkoffLogo, alt: "Tinkoff Bank" },
+              ].map(({ src, alt }) => (
+                <Image
+                  key={alt}
+                  src={src}
+                  alt={alt}
+                  height={24}
+                  style={{ width: "auto", objectFit: "contain" }}
+                />
+              ))}
             </div>
           </div>
 
@@ -195,18 +207,13 @@ export default function GiftCouple() {
               ))}
             </div>
             <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-100">
-              <span
-                className="text-xs font-bold text-[#006E3C]"
-                style={{ fontFamily: "var(--font-garamond)" }}
-              >
-                GTB
-              </span>
-              <span
-                className="text-xs text-gray-600"
-                style={{ fontFamily: "var(--font-garamond)" }}
-              >
-                Guaranty Trust Bank
-              </span>
+              <Image
+                src={gtbLogo}
+                alt="Guaranty Trust Bank"
+                height={24}
+                width={100}
+                style={{ width: "auto", objectFit: "contain" }}
+              />
             </div>
           </div>
         </div>

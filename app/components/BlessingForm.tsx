@@ -1,56 +1,71 @@
 "use client";
 
 import { useState } from "react";
+import { toast } from "@/lib/toast";
 
 export default function BlessingForm() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [honeypot, setHoneypot] = useState("");
+  const [sending, setSending] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!name.trim() || !message.trim()) return;
-    setStatus("sending");
+    setSending(true);
     try {
       const res = await fetch("/api/wishes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, message }),
+        body: JSON.stringify({ name, message, website: honeypot }),
       });
-      if (!res.ok) throw new Error();
-      setStatus("sent");
-      setName("");
-      setMessage("");
+      if (res.ok) {
+        toast.success(
+          "Your blessing has been received. It will appear once approved. 🤍",
+        );
+        setName("");
+        setMessage("");
+      } else {
+        const data = await res.json().catch(() => ({}));
+        toast.error(data.error ?? "Something went wrong. Please try again.");
+      }
     } catch {
-      setStatus("error");
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSending(false);
     }
-  }
-
-  if (status === "sent") {
-    return (
-      <div className="mb-16 text-center py-8">
-        <p
-          className="text-xl text-foreground"
-          style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic" }}
-        >
-          Your blessing has been received. 🤍
-        </p>
-        <p className="mt-2 text-sm text-gray-500" style={{ fontFamily: "var(--font-garamond)" }}>
-          It will appear on the site once approved.
-        </p>
-      </div>
-    );
   }
 
   return (
     <form onSubmit={handleSubmit} className="mb-16">
+      {/* Honeypot — hidden from humans, bots fill it in */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          left: "-9999px",
+          opacity: 0,
+          pointerEvents: "none",
+        }}
+      >
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          value={honeypot}
+          onChange={(e) => setHoneypot(e.target.value)}
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       <div className="mb-5">
         <label
           htmlFor="wish-name"
-          className="block text-xs tracking-widest uppercase text-gray-500 mb-2"
+          className="block font-semibold tracking-widest uppercase text-gray-500 mb-2"
           style={{ fontFamily: "var(--font-garamond)" }}
         >
-          Name *
+          Name <span className="text-red-500">*</span>
         </label>
         <input
           id="wish-name"
@@ -58,14 +73,14 @@ export default function BlessingForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="w-full border-0 border-b border-gray-300 bg-transparent py-2 text-sm text-foreground focus:outline-none focus:border-gold transition-colors"
+          className="w-full px-5 border rounded-full border-gray-300 bg-[#E8E6E6] py-2 text-foreground focus:outline-none focus:border-gold transition-colors"
           style={{ fontFamily: "var(--font-garamond)" }}
         />
       </div>
       <div className="mb-7">
         <label
           htmlFor="wish-message"
-          className="block text-xs tracking-widest uppercase text-gray-500 mb-2"
+          className="block font-semibold tracking-widest uppercase text-gray-500 mb-2"
           style={{ fontFamily: "var(--font-garamond)" }}
         >
           Message for us
@@ -74,29 +89,21 @@ export default function BlessingForm() {
           id="wish-message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          rows={5}
-          className="w-full bg-gray-100 rounded-sm p-4 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-gold resize-none"
+          rows={8}
+          className="w-full border border-gray-300 bg-[#E8E6E6] rounded-3xl p-4 text-foreground focus:outline-none focus:ring-1 focus:ring-gold resize-none"
           style={{ fontFamily: "var(--font-garamond)" }}
         />
       </div>
       <div className="flex justify-end">
         <button
           type="submit"
-          disabled={status === "sending"}
-          className="bg-gold text-white text-xs tracking-widest uppercase px-8 py-3 rounded-sm hover:bg-gold-dark transition-colors disabled:opacity-60"
+          disabled={sending}
+          className="bg-[#EBAC19] text-white font-medium rounded-full uppercase px-8 py-3 hover:bg-[#EBAC19]/80 transition-colors disabled:opacity-60"
           style={{ fontFamily: "var(--font-garamond)" }}
         >
-          {status === "sending" ? "Sending…" : "Drop a Blessing"}
+          {sending ? "SENDING…" : "SEND A BLESSING"}
         </button>
       </div>
-      {status === "error" && (
-        <p
-          className="mt-3 text-sm text-red-500 text-center"
-          style={{ fontFamily: "var(--font-garamond)" }}
-        >
-          Something went wrong. Please try again.
-        </p>
-      )}
     </form>
   );
 }

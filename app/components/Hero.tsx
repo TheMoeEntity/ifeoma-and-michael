@@ -38,22 +38,21 @@ export default function Hero() {
   const { days, hours, mins, secs } = useCountdown(WEDDING_DATE);
   const isMobile = useMobile();
   return (
-    <section className="relative w-full h-screen min-h-[600px]">
+    <section className="relative w-full h-screen min-h-[480px] md:min-h-[600px]">
       <Image
         src={isMobile ? "/img_banner_mobile.png" : "/wedding-banner.png"}
-        alt="Ifeoma and Michael"
-        className="object-center object-cover"
+        alt="Ifeoma and Michael Wedding Banner"
+        className="object-center object-cover "
         fill
         priority
       />
-
       {/* Dark overlay */}
-      <div className="hero-overlay absolute inset-0 bg-black/45" />
+      <div className="md:hidden hero-overlay absolute inset-0 bg-black/45" />
 
       {/* Names */}
-      <div className="hero-names left-5 absolute top-80 md:top-1/4 md:left-16">
+      <div className="hero-names left-5 absolute bottom-42 md:bottom-0 md:top-1/4 md:left-16">
         <h1
-          className="text-7xl md:text-8xl lg:text-9xl leading-none text-white"
+          className="text-8xl lg:text-9xl leading-none text-white"
           style={{
             fontFamily: "var(--font-cormorant)",
             fontStyle: "italic",
@@ -67,15 +66,15 @@ export default function Hero() {
       </div>
 
       {/* Bible verse */}
-      <div className="hero-verse absolute bottom-28 left-12 md:left-16 max-w-xs">
+      <div className="hero-verse absolute bottom-8 md:bottom-28 left-5 md:left-16 max-w-xs">
         <p
-          className="text-white text-2xl font-semibold tracking-wide mb-1"
+          className="text-white text-lg md:text-2xl font-semibold tracking-wide mb-1"
           style={{ fontFamily: "var(--font-garamond)" }}
         >
           James 1:17
         </p>
         <p
-          className="text-white leading-relaxed"
+          className="text-sm md:text-base text-white/80 md:text-white leading-relaxed"
           style={{ fontFamily: "var(--font-garamond)" }}
         >
           Every good and perfect gift is from above, coming down from the Father
@@ -85,7 +84,7 @@ export default function Hero() {
       </div>
 
       {/* Countdown */}
-      <div className="hero-countdown absolute bottom-16 right-12 md:right-16 text-right">
+      <div className="hero-countdown absolute bottom-88 md:bottom-16 right-4 md:right-16 text-right">
         <div
           className="text-white text-4xl md:text-5xl leading-tight"
           style={{
@@ -94,41 +93,37 @@ export default function Hero() {
             fontWeight: 400,
           }}
         >
-          <p>
-            <span className="countdown-tick">{days}</span> Days,
-          </p>
-          <p>
-            <span className="countdown-tick" style={{ animationDelay: "0.2s" }}>
-              {hours}
-            </span>{" "}
-            Hours
-          </p>
-          <p>
-            <span className="countdown-tick" style={{ animationDelay: "0.4s" }}>
-              {mins}
-            </span>{" "}
-            mins,
-          </p>
-          <p>
-            <span className="countdown-tick" style={{ animationDelay: "0.6s" }}>
-              {secs}
-            </span>{" "}
-            Secs
-          </p>
+          {/* Mobile: 2 columns (Days+Hours / Mins+Secs). Desktop: single column. */}
+          <div className="grid grid-cols-2 gap-x-0 md:grid-cols-1">
+            <p>
+              <span>{days}</span> Days,
+            </p>
+            <p>
+              <span>{hours}</span>
+              Hours
+            </p>
+            <p>
+              <span>{mins}</span>
+              mins,
+            </p>
+            <p>
+              <span>{secs}</span> Secs
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Nav arrows */}
       <button
         aria-label="Previous"
-        className="hero-arrows absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors text-3xl"
+        className="hero-arrows hidden absolute left-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors text-3xl"
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
       >
         ←
       </button>
       <button
         aria-label="Next"
-        className="hero-arrows absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors text-3xl"
+        className="hero-arrows hidden absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white transition-colors text-3xl"
         onClick={() =>
           document
             .getElementById("our-story")
