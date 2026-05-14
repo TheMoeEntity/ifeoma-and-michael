@@ -139,3 +139,8 @@ body {
 .toast-out {
   animation: toastOut 0.2s ease-in forwards;
 }
+
+@keyframes carouselProgress {
+  from { width: 0% }
+  to   { width: 100% }
+}

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, EB_Garamond } from "next/font/google";
 import "./globals.css";
 import Toaster from "./components/Toaster";
+import LoadingScreen from "./components/LoadingScreen";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -33,6 +34,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${garamond.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <LoadingScreen />
         {children}
         <Toaster />
       </body>

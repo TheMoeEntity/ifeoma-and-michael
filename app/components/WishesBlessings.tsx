@@ -21,7 +21,7 @@ export default async function WishesBlessings() {
             className="mt-4 text-gray-500 text-center"
             style={{ fontFamily: "var(--font-garamond)" }}
           >
-            Leave the couple a heartfelt message
+            Leave us a heartfelt message
           </p>
         </div>
 
