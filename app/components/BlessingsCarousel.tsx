@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
+import useMobile from "@/app/hooks/useMobile";
 
 interface Blessing {
   _id: string;
@@ -9,7 +10,6 @@ interface Blessing {
   message: string;
 }
 
-const MAX_VISIBLE = 3;
 const DURATION = 8000;
 const FADE = 400;
 
@@ -22,6 +22,9 @@ export default function BlessingsCarousel({
     (b, i, arr) => arr.findIndex((x) => x._id === b._id) === i,
   );
   const n = blessings.length;
+
+  const isMobile = useMobile();
+  const maxVisible = isMobile ? 1 : 3;
 
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
@@ -40,7 +43,7 @@ export default function BlessingsCarousel({
 
   // Auto-advance
   useEffect(() => {
-    if (!playing || n <= MAX_VISIBLE) return;
+    if (!playing || n <= maxVisible) return;
     const id = setTimeout(() => go(index + 1), DURATION);
     return () => clearTimeout(id);
   }, [playing, index, n, go]);
@@ -48,11 +51,11 @@ export default function BlessingsCarousel({
   if (n === 0) return null;
 
   const slice =
-    n <= MAX_VISIBLE
+    n <= maxVisible
       ? blessings
-      : Array.from({ length: MAX_VISIBLE }, (_, k) => blessings[(index + k) % n]);
+      : Array.from({ length: maxVisible }, (_, k) => blessings[(index + k) % n]);
 
-  const showControls = n > MAX_VISIBLE;
+  const showControls = n > maxVisible;
 
   return (
     <div className="py-12 bg-white">

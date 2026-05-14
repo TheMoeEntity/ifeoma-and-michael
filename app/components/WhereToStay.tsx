@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Pause, Play, X } from "lucide-react";
 import WeddingOrnament from "./WeddingOrnament";
+import useMobile from "@/app/hooks/useMobile";
 
 interface Hotel {
   name: string;
@@ -50,12 +51,14 @@ const hotels: Hotel[] = [
   },
 ];
 
-const MAX_VISIBLE = 3;
 const DURATION = 7000;
 const FADE = 350;
 const n = hotels.length;
 
 export default function WhereToStay() {
+  const isMobile = useMobile();
+  const maxVisible = isMobile ? 1 : 3;
+
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(true);
   const [playing, setPlaying] = useState(true);
@@ -71,7 +74,7 @@ export default function WhereToStay() {
 
   // Auto-advance
   useEffect(() => {
-    if (!playing || n <= MAX_VISIBLE || selected) return;
+    if (!playing || n <= maxVisible || selected) return;
     const id = setTimeout(() => go(index + 1), DURATION);
     return () => clearTimeout(id);
   }, [playing, index, selected, go]);
@@ -90,11 +93,11 @@ export default function WhereToStay() {
   }, []);
 
   const visibleHotels =
-    n <= MAX_VISIBLE
+    n <= maxVisible
       ? hotels
-      : Array.from({ length: MAX_VISIBLE }, (_, k) => hotels[(index + k) % n]);
+      : Array.from({ length: maxVisible }, (_, k) => hotels[(index + k) % n]);
 
-  const showControls = n > MAX_VISIBLE;
+  const showControls = n > maxVisible;
 
   return (
     <>
