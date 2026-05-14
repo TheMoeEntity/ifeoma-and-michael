@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <circle cx="100" cy="100" r="100" fill="#1a1208"/>
+
+  <!-- Outer decorative ring -->
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#EBAC19" stroke-width="0.6" stroke-opacity="0.3"/>
+
+  <!-- Main ring -->
+  <circle cx="100" cy="100" r="84" fill="none" stroke="#EBAC19" stroke-width="1.2" stroke-opacity="0.65"/>
+
+  <!-- Inner ring -->
+  <circle cx="100" cy="100" r="76" fill="none" stroke="#EBAC19" stroke-width="0.4" stroke-opacity="0.25"/>
+
+  <!-- Monogram -->
+  <text
+    x="100"
+    y="116"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-style="italic"
+    font-weight="400"
+    font-size="52"
+    fill="#EBAC19"
+    letter-spacing="2"
+  >I&amp;M</text>
+</svg>
