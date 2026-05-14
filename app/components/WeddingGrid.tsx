@@ -4,7 +4,7 @@ import gridItemOne from "@/app/assets/wedding-grid.png";
 import gridItemTwo from "@/app/assets/wedding-grid-2.png";
 import gridItemThree from "@/app/assets/wedding-grid-3.png";
 import gridItemFour from "@/app/assets/wedding-grid-4.png";
-import gridItemFive from "@/app/assets/wedding-grid-5.png";
+import gridItemFive from "@/app/assets/mike_and_ifeoma.jpg";
 
 import Image, { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
