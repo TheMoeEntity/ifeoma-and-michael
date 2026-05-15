@@ -4,6 +4,7 @@ import "./globals.css";
 import Toaster from "./components/Toaster";
 import LoadingScreen from "./components/LoadingScreen";
 import ScrollTop from "./components/ScrollTop";
+import { Analytics } from "@vercel/analytics/next";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -39,6 +40,7 @@ export default function RootLayout({
         {children}
         <ScrollTop />
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
