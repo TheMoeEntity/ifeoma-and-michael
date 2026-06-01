@@ -9,7 +9,7 @@ import RSVP from "./components/RSVP";
 import Footer from "./components/Footer";
 import WeddingGrid from "./components/WeddingGrid";
 import WhereToStay from "./components/WhereToStay";
-
+export const dynamic = "force-dynamic";
 export default function Home() {
   return (
     <>
