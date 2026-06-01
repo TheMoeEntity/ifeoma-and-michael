@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Ornament from "./components/Ornament";
+import WeddingOrnament from "./components/WeddingOrnament";
 
 export const metadata = {
   title: "Page Not Found — Ifeoma & Michael 2026",
@@ -14,9 +14,12 @@ export default function NotFound() {
       <main className="flex-1 flex flex-col items-center justify-center min-h-screen px-6 text-center">
         <div
           className="opacity-0"
-          style={{ animation: "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards" }}
+          style={{
+            animation:
+              "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards",
+          }}
         >
-          <Ornament />
+          <WeddingOrnament />
         </div>
 
         <h1
@@ -27,7 +30,8 @@ export default function NotFound() {
             fontWeight: 400,
             color: "#C9A84C",
             opacity: 0,
-            animation: "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards",
+            animation:
+              "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards",
           }}
         >
           404
@@ -38,7 +42,8 @@ export default function NotFound() {
           style={{
             fontFamily: "var(--font-cormorant)",
             opacity: 0,
-            animation: "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards",
+            animation:
+              "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards",
           }}
         >
           This page has wandered off
@@ -49,7 +54,8 @@ export default function NotFound() {
           style={{
             fontFamily: "var(--font-garamond)",
             opacity: 0,
-            animation: "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards",
+            animation:
+              "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.55s forwards",
           }}
         >
           Like guests who take a wrong turn, even the best paths lead somewhere
@@ -60,7 +66,8 @@ export default function NotFound() {
           className="mt-10 flex flex-col sm:flex-row items-center gap-4"
           style={{
             opacity: 0,
-            animation: "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards",
+            animation:
+              "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards",
           }}
         >
           <Link
@@ -76,10 +83,11 @@ export default function NotFound() {
           className="mt-14"
           style={{
             opacity: 0,
-            animation: "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards",
+            animation:
+              "slideInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.85s forwards",
           }}
         >
-          <Ornament />
+          <WeddingOrnament />
         </div>
       </main>
       <Footer />

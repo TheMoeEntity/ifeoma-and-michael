@@ -4,9 +4,9 @@ import { Download, Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const NAV_LINKS = [
-  { href: "#our-story", label: "Our Story" },
-  { href: "#details", label: "Details" },
-  { href: "#gift", label: "Gift the Couple" },
+  { href: "/#our-story", label: "Our Story" },
+  { href: "/#details", label: "Details" },
+  { href: "/#gift", label: "Gift the Couple" },
   //   { href: "#wishes", label: "Wishes & Blessings" },
   //   { href: "#rsvp", label: "RSVP" },
 ];
