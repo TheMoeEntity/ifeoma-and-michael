@@ -1,10 +1,11 @@
 "use client";
 
-import gridItemOne from "@/app/assets/wedding-grid.png";
-import gridItemTwo from "@/app/assets/wedding-grid-2.png";
-import gridItemThree from "@/app/assets/wedding-grid-3.png";
-import gridItemFour from "@/app/assets/wedding-grid-4.png";
-import gridItemFive from "@/app/assets/mike_and_ifeoma.jpg";
+import gridItemOne from "@/app/assets/grid_one_top.png";
+import gridItemTwo from "@/app/assets/grid_one_bottom.png";
+import gridItemThree from "@/app/assets/grid_two_top_left.png";
+import gridItemFour from "@/app/assets/grid_two_top_right.png";
+import gridItemFive from "@/app/assets/wedding-grid.png";
+import gridItemSix from "@/app/assets/wedding-grid-2.png";
 
 import Image, { StaticImageData } from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
@@ -22,6 +23,7 @@ const images: WeddingImage[] = [
   { src: gridItemThree, alt: "Ifeoma" },
   { src: gridItemFour, alt: "Michael" },
   { src: gridItemFive, alt: "Ifeoma and Michael" },
+  { src: gridItemSix, alt: "Ifeoma and Michael" },
 ];
 
 const WeddingGrid = () => {
@@ -131,19 +133,35 @@ const WeddingGrid = () => {
               </button>
             </div>
 
-            <button
-              type="button"
-              onClick={() => setActiveIndex(4)}
-              className="group relative flex-[2] rounded-2xl overflow-hidden"
-            >
-              <Image
-                src={gridItemFive}
-                alt="Ifeoma and Michael"
-                fill
-                className={imageClassName}
-                placeholder="blur"
-              />
-            </button>
+            <div className="flex gap-2 md:gap-3 flex-[2]">
+              <button
+                type="button"
+                onClick={() => setActiveIndex(4)}
+                className="group relative flex-1 rounded-2xl overflow-hidden"
+              >
+                <Image
+                  src={gridItemFive}
+                  alt="Ifeoma and Michael"
+                  fill
+                  className={imageClassName}
+                  placeholder="blur"
+                />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setActiveIndex(5)}
+                className="group relative flex-1 rounded-2xl overflow-hidden"
+              >
+                <Image
+                  src={gridItemSix}
+                  alt="Ifeoma and Michael"
+                  fill
+                  className={imageClassName}
+                  placeholder="blur"
+                />
+              </button>
+            </div>
           </div>
         </div>
       </section>

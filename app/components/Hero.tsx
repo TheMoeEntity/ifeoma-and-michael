@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import useMobile from "../hooks/useMobile";
 
 const WEDDING_DATE = new Date("2026-08-06T12:00:00");
 
@@ -36,18 +35,30 @@ function useCountdown(target: Date) {
 
 export default function Hero() {
   const { days, hours, mins, secs } = useCountdown(WEDDING_DATE);
-  const isMobile = useMobile();
   return (
     <section className="relative w-full h-screen min-h-[480px] md:min-h-[600px]">
-      <Image
-        src={isMobile ? "/img_banner_mobile.png" : "/wedding-banner.png"}
-        alt="Ifeoma and Michael Wedding Banner"
-        className="object-center object-cover "
-        fill
-        priority
-      />
+      {/* Mobile background image */}
+      <div className="absolute inset-0 md:hidden">
+        <Image
+          src="/im_banner_mobile.png"
+          alt="Ifeoma and Michael Wedding Banner"
+          className="object-center object-cover"
+          fill
+          priority
+        />
+      </div>
+      {/* Desktop background image */}
+      <div className="absolute inset-0 hidden md:block">
+        <Image
+          src="/im_banner.png"
+          alt="Ifeoma and Michael Wedding Banner"
+          className="object-center object-cover"
+          fill
+          priority
+        />
+      </div>
       {/* Dark overlay */}
-      <div className="md:hidden hero-overlay absolute inset-0 bg-black/45" />
+      <div className="hero-overlay absolute inset-0 bg-black/45 md:bg-black/20" />
 
       {/* Names */}
       <div className="hero-names left-5 absolute bottom-42 md:bottom-0 md:top-1/4 md:left-16">
