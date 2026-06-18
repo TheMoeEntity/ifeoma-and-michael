@@ -20,10 +20,10 @@ export default function Home() {
         <WeddingGrid />
         <Details />
         <GiftCouple />
-        {/* <WishesBlessings />
+        <WishesBlessings />
         <BlessingsCarouselServer />
         <RSVP />
-        <WhereToStay /> */}
+        <WhereToStay />
       </main>
       <Footer />
     </>
