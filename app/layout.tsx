@@ -21,11 +21,6 @@ const garamond = EB_Garamond({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_CLIENT_URL ||
-      `https://${process.env.NEXT_PUBLIC_CLIENT_URL}`,
-  ),
-
   title: "Ifeoma & Michael 2026",
   description:
     "Join us as we celebrate the wedding of Ifeoma and Michael on the 6th of August, 2026.",
@@ -37,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Ifeoma & Michael Wedding",
     images: [
       {
-        url: "/im_banner.png",
+        url: "https://ifeomamichael.com/im_banner.png",
         width: 1200,
         height: 630,
         alt: "Ifeoma and Michael Wedding Banner",
@@ -51,7 +46,7 @@ export const metadata: Metadata = {
     title: "Ifeoma & Michael 2026",
     description:
       "Join us as we celebrate the wedding of Ifeoma and Michael on August 6th, 2026.",
-    images: [process.env.NEXT_PUBLIC_CLIENT_URL + "/im_banner.png"],
+    images: ["https://ifeomamichael.com/im_banner.png"],
   },
 };
 
