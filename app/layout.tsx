@@ -28,11 +28,11 @@ export const metadata: Metadata = {
 
   title: "Ifeoma & Michael 2026",
   description:
-    "Join us as we celebrate the wedding of Ifeoma and Michael on August 6th, 2026.",
+    "Join us as we celebrate the wedding of Ifeoma and Michael on the 6th of August, 2026.",
   openGraph: {
     title: "Ifeoma & Michael 2026",
     description:
-      "Join us as we celebrate the wedding of Ifeoma and Michael on August 6th, 2026.",
+      "Join us as we celebrate the wedding of Ifeoma and Michael on the 6th of August, 2026.",
     url: "/",
     siteName: "Ifeoma & Michael Wedding",
     images: [
