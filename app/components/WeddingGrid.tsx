@@ -66,7 +66,7 @@ const WeddingGrid = () => {
   }, [activeIndex]);
 
   const imageClassName =
-    "object-cover transition duration-500 group-hover:scale-105";
+    "object-cover transition duration-500 group-hover:scale-105 ";
 
   return (
     <>
@@ -82,7 +82,7 @@ const WeddingGrid = () => {
                 src={gridItemOne}
                 alt="Michael"
                 fill
-                className={imageClassName}
+                className={imageClassName + "object-left md:object-center"}
                 placeholder="blur"
               />
             </button>
@@ -127,7 +127,7 @@ const WeddingGrid = () => {
                   src={gridItemFour}
                   alt="Michael"
                   fill
-                  className={imageClassName}
+                  className={imageClassName + "object-left md:object-center"}
                   placeholder="blur"
                 />
               </button>
