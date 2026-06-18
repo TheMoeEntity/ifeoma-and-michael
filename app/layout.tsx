@@ -21,8 +21,38 @@ const garamond = EB_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_CLIENT_URL ||
+      `https://${process.env.NEXT_PUBLIC_CLIENT_URL}`,
+  ),
+
   title: "Ifeoma & Michael 2026",
-  description: "Join us as we celebrate the wedding of Ifeoma and Michael",
+  description:
+    "Join us as we celebrate the wedding of Ifeoma and Michael on August 6th, 2026.",
+  openGraph: {
+    title: "Ifeoma & Michael 2026",
+    description:
+      "Join us as we celebrate the wedding of Ifeoma and Michael on August 6th, 2026.",
+    url: "/",
+    siteName: "Ifeoma & Michael Wedding",
+    images: [
+      {
+        url: "/im_banner.png",
+        width: 1200,
+        height: 630,
+        alt: "Ifeoma and Michael Wedding Banner",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ifeoma & Michael 2026",
+    description:
+      "Join us as we celebrate the wedding of Ifeoma and Michael on August 6th, 2026.",
+    images: [process.env.NEXT_PUBLIC_CLIENT_URL + "/im_banner.png"],
+  },
 };
 
 export default function RootLayout({
