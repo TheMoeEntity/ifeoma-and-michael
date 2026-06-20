@@ -72,9 +72,11 @@ export async function POST(request: NextRequest) {
       approved: false,
     });
 
-    sendBlessingNotification({ name, message }).catch((err) =>
-      console.error("Failed to send blessing notification:", err),
-    );
+    try {
+      await sendBlessingNotification({ name, message });
+    } catch (err) {
+      console.error("Failed to send blessing notification:", err);
+    }
 
     return NextResponse.json({ ok: true });
   } catch (error) {

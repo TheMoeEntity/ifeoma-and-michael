@@ -81,9 +81,11 @@ export async function POST(request: NextRequest) {
       message,
     });
 
-    sendRsvpNotification({ fullName, phone, guests, message: message || undefined }).catch((err) =>
-      console.error("Failed to send RSVP notification:", err),
-    );
+    try {
+      await sendRsvpNotification({ fullName, phone, guests, message: message || undefined });
+    } catch (err) {
+      console.error("Failed to send RSVP notification:", err);
+    }
 
     return Response.json({ ok: true });
   } catch (error) {
