@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { writeClient } from "@/lib/sanity";
 import { isRateLimited } from "@/lib/rateLimit";
 import { validateBlessing } from "@/lib/validate";
+import { sendBlessingNotification } from "@/lib/mailer";
 
 const URL_RE = /https?:\/\/|www\./i;
 
@@ -70,6 +71,10 @@ export async function POST(request: NextRequest) {
       message,
       approved: false,
     });
+
+    sendBlessingNotification({ name, message }).catch((err) =>
+      console.error("Failed to send blessing notification:", err),
+    );
 
     return NextResponse.json({ ok: true });
   } catch (error) {

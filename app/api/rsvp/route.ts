@@ -2,6 +2,7 @@ import type { NextRequest } from "next/server";
 import { writeClient } from "@/lib/sanity";
 import { isRateLimited } from "@/lib/rateLimit";
 import { validateBlessing } from "@/lib/validate";
+import { sendRsvpNotification } from "@/lib/mailer";
 
 const URL_RE = /https?:\/\/|www\./i;
 const VALID_GUESTS = ["1 Guest", "2 Guests", "3 Guests", "4 Guests", "5+ Guests"];
@@ -79,6 +80,10 @@ export async function POST(request: NextRequest) {
       guests,
       message,
     });
+
+    sendRsvpNotification({ fullName, phone, guests, message: message || undefined }).catch((err) =>
+      console.error("Failed to send RSVP notification:", err),
+    );
 
     return Response.json({ ok: true });
   } catch (error) {
