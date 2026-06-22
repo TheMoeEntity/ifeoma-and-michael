@@ -103,18 +103,43 @@ export default function BlessingsCarousel({
                 <ChevronLeft size={16} />
               </button>
 
-              {/* Dots */}
-              <div className="flex gap-2">
-                {blessings.map((b, i) => (
-                  <button
-                    key={b._id}
-                    aria-label={`Go to blessing ${i + 1}`}
-                    onClick={() => go(i)}
-                    className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                      i === index ? "bg-gold" : "bg-gray-200"
-                    }`}
-                  />
-                ))}
+              {/* Dots — windowed so they never overflow on mobile */}
+              <div className="flex items-center gap-1.5 overflow-hidden">
+                {(() => {
+                  const MAX_DOTS = 5;
+                  const half = Math.floor(MAX_DOTS / 2);
+                  // Window start clamped so we always show MAX_DOTS (or fewer)
+                  const start = Math.min(
+                    Math.max(0, index - half),
+                    Math.max(0, n - MAX_DOTS),
+                  );
+                  const end = Math.min(n, start + MAX_DOTS);
+                  return blessings.slice(start, end).map((b, offset) => {
+                    const i = start + offset;
+                    const isActive = i === index;
+                    // Shrink + fade the outermost dots when there are more beyond them
+                    const isEdge =
+                      (offset === 0 && start > 0) ||
+                      (offset === end - start - 1 && end < n);
+                    return (
+                      <button
+                        key={b._id}
+                        aria-label={`Go to blessing ${i + 1}`}
+                        onClick={() => go(i)}
+                        style={{
+                          width: isActive ? 20 : 8,
+                          height: 8,
+                          opacity: isEdge ? 0.4 : 1,
+                          transform: isEdge ? "scale(0.75)" : "scale(1)",
+                          transition:
+                            "width 300ms ease, opacity 300ms ease, transform 300ms ease, background-color 300ms ease",
+                          flexShrink: 0,
+                        }}
+                        className={`rounded-full ${isActive ? "bg-gold" : "bg-gray-300"}`}
+                      />
+                    );
+                  });
+                })()}
               </div>
 
               {/* Next */}
