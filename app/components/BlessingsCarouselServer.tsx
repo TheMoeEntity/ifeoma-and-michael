@@ -10,7 +10,7 @@ interface Blessing {
 async function getApprovedBlessings(): Promise<Blessing[]> {
   try {
     return await readClient.fetch(
-      `*[_type == "blessing" && approved == true] | order(_createdAt desc) [0...9] { _id, name, message }`,
+      `*[_type == "blessing" && approved == true] | order(_createdAt desc) { _id, name, message }`,
       {},
       { next: { tags: ["blessings"] } },
     );
