@@ -6,7 +6,7 @@ import Ornament from "./Ornament";
 import WeddingOrnament from "./WeddingOrnament";
 
 import opayLogo from "../assets/Opay 1.png";
-import accessLogo from "../assets/Access Bank 1.png";
+// import accessLogo from "../assets/Access Bank 1.png";
 import gtbLogo from "../assets/GT Bank 1.png";
 import vtbLogo from "../assets/Vtb-logo 1.png";
 import alphaLogo from "../assets/alpha-bank-romania-vector-logo.png";
@@ -125,7 +125,7 @@ export default function GiftCouple() {
                 </span>
                 <CopyButton value="7018183702" />
               </div>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <Image
                   src={accessLogo}
                   alt="Access Bank"
@@ -139,7 +139,7 @@ export default function GiftCouple() {
                   1575614779
                 </span>
                 <CopyButton value="1575614779" />
-              </div>
+              </div> */}
             </div>
           </div>
 
